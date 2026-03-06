@@ -657,6 +657,16 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure page has enough content at bottom */
+body::after {
+  content: '';
+  display: block;
+  height: 1px;
 }
 
 .footer-logo {
@@ -723,7 +733,7 @@ footer {
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Vibe Check <span>decoded</span></a>
-  <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="nav-cta" target="_blank">
+  <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="nav-cta" target="_blank">
     <span>Begin →</span>
   </a>
 </nav>
@@ -755,7 +765,7 @@ footer {
   </div>
 
   <div class="hero-cta">
-    <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="btn-primary" target="_blank">
+    <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="btn-primary" target="_blank">
       <span>Run the Calculation →</span>
     </a>
     <a href="#how-it-works" class="btn-ghost">See How It Works</a>
@@ -935,7 +945,7 @@ footer {
   </div>
 
   <div class="pricing-grid reveal">
-    <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
+    <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
       <div class="price-name">Single Report</div>
       <div class="price-amount">$8</div>
       <div class="price-cadence">one-time</div>
@@ -947,7 +957,7 @@ footer {
       <div class="price-btn">Select →</div>
     </a>
 
-    <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
+    <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
       <div class="price-name">Life Reset Pack</div>
       <div class="price-amount">$28</div>
       <div class="price-cadence">one-time · 4 reports</div>
@@ -959,7 +969,7 @@ footer {
       <div class="price-btn">Select →</div>
     </a>
 
-    <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card featured" target="_blank">
+    <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card featured" target="_blank">
       <div class="price-featured-tag">✦ Most Popular</div>
       <div class="price-name">Cosmic Monthly</div>
       <div class="price-amount">$11</div>
@@ -974,7 +984,7 @@ footer {
       <div class="price-btn">Select →</div>
     </a>
 
-    <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
+    <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
       <div class="price-name">Cosmic Ascendant</div>
       <div class="price-amount">$22</div>
       <div class="price-cadence">per month</div>
@@ -1001,7 +1011,7 @@ footer {
     Your first reading is free. No account required. 
     Enter your birth data and see what the calculation returns.
   </p>
-  <a href="https://gnamae-reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="btn-primary" target="_blank">
+  <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="btn-primary" target="_blank">
     <span>Run Your Calculation — Free →</span>
   </a>
 </section>
