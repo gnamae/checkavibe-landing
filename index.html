@@ -21,9 +21,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--cream);
@@ -33,683 +31,317 @@ body {
   cursor: crosshair;
 }
 
-/* ── SACRED GEOMETRY CANVAS ───────────────────────────── */
 #geo-canvas {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
-  z-index: 0;
-  opacity: 0.35;
-  pointer-events: none;
+  z-index: 0; opacity: 0.35; pointer-events: none;
 }
-
 .content { position: relative; z-index: 1; }
 
 /* ── NAV ─────────────────────────────────────────────── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 1.5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; justify-content: space-between; align-items: center;
   border-bottom: 1px solid rgba(200,169,110,0.08);
-  background: rgba(8,6,15,0.7);
-  backdrop-filter: blur(12px);
+  background: rgba(8,6,15,0.7); backdrop-filter: blur(12px);
 }
-
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: -0.03em;
-  text-decoration: none;
+  font-size: 1.3rem; font-weight: 600;
+  color: var(--gold); letter-spacing: -0.03em; text-decoration: none;
 }
-
-.nav-logo span {
-  font-weight: 300;
-  color: var(--violet);
-  font-style: italic;
-  letter-spacing: 0.05em;
-}
-
+.nav-logo span { font-weight: 300; color: var(--violet); font-style: italic; letter-spacing: 0.05em; }
 .nav-cta {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--bg);
-  background: var(--gold);
-  padding: 0.6rem 1.5rem;
-  text-decoration: none;
-  transition: all 0.3s;
+  font-size: 0.65rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--bg); background: var(--gold);
+  padding: 0.6rem 1.5rem; text-decoration: none; transition: all 0.3s;
 }
-
-.nav-cta:hover {
-  background: var(--gold-lt);
-  letter-spacing: 0.4em;
-}
+.nav-cta:hover { background: var(--gold-lt); letter-spacing: 0.4em; }
 
 /* ── HERO ─────────────────────────────────────────────── */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 8rem 2rem 4rem;
-  position: relative;
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 8rem 2rem 4rem; position: relative;
 }
-
 .hero-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.55em;
-  text-transform: uppercase;
-  color: rgba(167,139,250,0.6);
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 1s 0.3s forwards;
+  font-size: 0.6rem; letter-spacing: 0.55em; text-transform: uppercase;
+  color: rgba(167,139,250,0.6); margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 1s 0.2s forwards;
 }
-
+.hero-first {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem; font-style: italic; letter-spacing: 0.3em;
+  color: rgba(200,169,110,0.55); margin-bottom: 1.75rem;
+  border: 1px solid rgba(200,169,110,0.15); display: inline-block;
+  padding: 0.45rem 1.25rem;
+  opacity: 0; animation: fadeUp 1s 0.35s forwards;
+}
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3.5rem, 9vw, 7.5rem);
-  font-weight: 300;
-  line-height: 0.95;
-  color: var(--gold);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25em;
-  opacity: 0;
-  animation: fadeUp 1s 0.5s forwards;
+  font-weight: 300; line-height: 0.95; color: var(--gold);
+  letter-spacing: -0.02em; margin-bottom: 0.25em;
+  opacity: 0; animation: fadeUp 1s 0.5s forwards;
 }
-
-.hero-title em {
-  font-style: italic;
-  color: var(--cream);
-  font-weight: 300;
-}
-
+.hero-title em { font-style: italic; color: var(--cream); font-weight: 300; }
 .hero-sub {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
-  font-style: italic;
-  color: var(--dim);
-  max-width: 520px;
-  line-height: 1.7;
-  margin: 1.5rem auto 0;
-  opacity: 0;
-  animation: fadeUp 1s 0.7s forwards;
+  font-size: clamp(1rem, 2.5vw, 1.35rem); font-style: italic;
+  color: var(--dim); max-width: 560px; line-height: 1.75; margin: 1.5rem auto 0;
+  opacity: 0; animation: fadeUp 1s 0.7s forwards;
 }
-
-.hero-formula {
-  margin-top: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeUp 1s 0.9s forwards;
+.hero-stats {
+  margin-top: 2.5rem; display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 1s 0.85s forwards;
 }
-
-.formula-item {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(200,169,110,0.6);
-  border: 1px solid rgba(200,169,110,0.2);
-  padding: 0.4rem 0.85rem;
-  border-radius: 1px;
-}
-
-.formula-op {
+.stat-item { text-align: center; }
+.stat-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  color: rgba(167,139,250,0.5);
+  font-size: 2.2rem; font-weight: 300; color: var(--gold); line-height: 1;
 }
-
-.hero-cta {
-  margin-top: 3.5rem;
-  opacity: 0;
-  animation: fadeUp 1s 1.1s forwards;
+.stat-label {
+  font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(240,235,224,0.3); margin-top: 0.25rem;
 }
+.hero-formula {
+  margin-top: 2.5rem; display: flex; align-items: center;
+  gap: 0.75rem; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 1s 0.9s forwards;
+}
+.formula-item {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(200,169,110,0.6); border: 1px solid rgba(200,169,110,0.2);
+  padding: 0.4rem 0.85rem; border-radius: 1px;
+}
+.formula-op { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(167,139,250,0.5); }
+.hero-cta { margin-top: 3rem; opacity: 0; animation: fadeUp 1s 1.1s forwards; }
 
 .btn-primary {
-  display: inline-block;
-  font-size: 0.65rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--bg);
-  background: var(--gold);
-  padding: 1rem 3rem;
-  text-decoration: none;
-  transition: all 0.35s;
-  position: relative;
-  overflow: hidden;
+  display: inline-block; font-size: 0.65rem; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--bg); background: var(--gold);
+  padding: 1rem 3rem; text-decoration: none; transition: all 0.35s;
+  position: relative; overflow: hidden;
 }
-
 .btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gold-lt);
-  transform: translateX(-101%);
-  transition: transform 0.35s;
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold-lt); transform: translateX(-101%); transition: transform 0.35s;
 }
-
 .btn-primary:hover::after { transform: translateX(0); }
 .btn-primary span { position: relative; z-index: 1; }
-
 .btn-ghost {
-  display: inline-block;
-  font-size: 0.62rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--dim);
-  border: 1px solid rgba(240,235,224,0.15);
-  padding: 1rem 2.5rem;
-  text-decoration: none;
-  margin-left: 1rem;
-  transition: all 0.3s;
+  display: inline-block; font-size: 0.62rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--dim);
+  border: 1px solid rgba(240,235,224,0.15); padding: 1rem 2.5rem;
+  text-decoration: none; margin-left: 1rem; transition: all 0.3s;
 }
+.btn-ghost:hover { color: var(--cream); border-color: rgba(240,235,224,0.4); }
 
-.btn-ghost:hover {
-  color: var(--cream);
-  border-color: rgba(240,235,224,0.4);
-}
-
-/* ── SCROLL INDICATOR ─────────────────────────────────── */
 .scroll-hint {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0;
-  animation: fadeIn 1s 2s forwards;
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0; animation: fadeIn 1s 2s forwards;
 }
-
-.scroll-hint span {
-  font-size: 0.5rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: rgba(200,169,110,0.35);
-}
-
+.scroll-hint span { font-size: 0.5rem; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(200,169,110,0.35); }
 .scroll-line {
-  width: 1px;
-  height: 40px;
+  width: 1px; height: 40px;
   background: linear-gradient(to bottom, rgba(200,169,110,0.4), transparent);
   animation: scrollPulse 2s infinite;
 }
 
 /* ── DIVIDER ─────────────────────────────────────────── */
 .section-divider {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 200px;
-  margin: 0 auto 4rem;
+  display: flex; align-items: center; gap: 1.5rem;
+  max-width: 200px; margin: 0 auto 4rem;
 }
-
-.section-divider::before,
-.section-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
+.section-divider::before, .section-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--line);
 }
+.divider-glyph { color: var(--gold); font-size: 0.7rem; opacity: 0.6; }
 
-.divider-glyph {
-  color: var(--gold);
-  font-size: 0.7rem;
-  opacity: 0.6;
+/* ── CODEX STRIP ─────────────────────────────────────── */
+.codex-strip {
+  background: linear-gradient(135deg, #0d0a18, #110d20);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  padding: 5rem 2rem;
+}
+.codex-inner { max-width: 1000px; margin: 0 auto; }
+.codex-label {
+  font-size: 0.58rem; letter-spacing: 0.55em; text-transform: uppercase;
+  color: var(--violet); opacity: 0.6; text-align: center; margin-bottom: 1rem;
+}
+.codex-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300;
+  text-align: center; color: var(--cream); line-height: 1.2; margin-bottom: 1.5rem;
+}
+.codex-title em { font-style: italic; color: var(--gold); }
+.codex-body {
+  font-size: 0.85rem; color: var(--dim); text-align: center;
+  max-width: 600px; margin: 0 auto 3.5rem; line-height: 2; letter-spacing: 0.04em;
+}
+.codex-books {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: center; max-width: 900px; margin: 0 auto;
+}
+.codex-book {
+  font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(200,169,110,0.45); border: 1px solid rgba(200,169,110,0.12);
+  padding: 0.3rem 0.8rem; white-space: nowrap;
 }
 
 /* ── THE FORMULA SECTION ─────────────────────────────── */
-.formula-section {
-  padding: 8rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
+.formula-section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
 .section-label {
-  font-size: 0.58rem;
-  letter-spacing: 0.55em;
-  text-transform: uppercase;
-  color: var(--violet);
-  opacity: 0.7;
-  text-align: center;
-  margin-bottom: 1rem;
+  font-size: 0.58rem; letter-spacing: 0.55em; text-transform: uppercase;
+  color: var(--violet); opacity: 0.7; text-align: center; margin-bottom: 1rem;
 }
-
 .section-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 300;
-  text-align: center;
-  color: var(--cream);
-  line-height: 1.15;
-  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300;
+  text-align: center; color: var(--cream); line-height: 1.15; margin-bottom: 1rem;
 }
-
-.section-title em {
-  font-style: italic;
-  color: var(--gold);
-}
-
+.section-title em { font-style: italic; color: var(--gold); }
 .section-body {
-  font-size: 0.9rem;
-  color: var(--dim);
-  text-align: center;
-  max-width: 540px;
-  margin: 0 auto 5rem;
-  line-height: 1.9;
-  letter-spacing: 0.03em;
+  font-size: 0.9rem; color: var(--dim); text-align: center;
+  max-width: 540px; margin: 0 auto 5rem; line-height: 1.9; letter-spacing: 0.03em;
 }
-
-/* Inputs grid */
 .inputs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-bottom: 3rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 3rem;
 }
-
-.input-item {
-  background: var(--bg2);
-  padding: 2rem 1.75rem;
-  transition: background 0.3s;
-}
-
+.input-item { background: var(--bg2); padding: 2rem 1.75rem; transition: background 0.3s; }
 .input-item:hover { background: #110e20; }
-
-.input-number {
-  font-size: 0.55rem;
-  letter-spacing: 0.3em;
-  color: rgba(200,169,110,0.35);
-  margin-bottom: 0.75rem;
-}
-
-.input-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  color: var(--gold);
-  margin-bottom: 0.4rem;
-}
-
-.input-desc {
-  font-size: 0.72rem;
-  color: rgba(240,235,224,0.35);
-  letter-spacing: 0.05em;
-  line-height: 1.6;
-}
-
-/* Output arrow */
-.formula-arrow {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.formula-arrow svg {
-  opacity: 0.3;
-}
-
-/* Output */
+.input-number { font-size: 0.55rem; letter-spacing: 0.3em; color: rgba(200,169,110,0.35); margin-bottom: 0.75rem; }
+.input-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.4rem; }
+.input-desc { font-size: 0.72rem; color: rgba(240,235,224,0.35); letter-spacing: 0.05em; line-height: 1.6; }
+.formula-arrow { text-align: center; margin: 2rem 0; }
+.formula-arrow svg { opacity: 0.3; }
 .outputs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.75rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;
 }
-
 .output-item {
-  border: 1px solid var(--line);
-  padding: 1.5rem 1.25rem;
-  text-align: center;
-  transition: all 0.3s;
-  cursor: default;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid var(--line); padding: 1.25rem 1rem; text-align: center;
+  transition: all 0.3s; cursor: default; position: relative; overflow: hidden;
 }
-
 .output-item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, rgba(200,169,110,0.04), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
+  opacity: 0; transition: opacity 0.3s;
 }
-
 .output-item:hover::before { opacity: 1; }
 .output-item:hover { border-color: rgba(200,169,110,0.4); }
-
-.output-icon { font-size: 1.2rem; margin-bottom: 0.6rem; }
-
-.output-name {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--dim);
+.output-icon { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.output-name { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+.output-new {
+  display: inline-block; font-size: 0.42rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--bg); background: var(--violet);
+  padding: 0.1rem 0.4rem; margin-bottom: 0.35rem;
 }
 
 /* ── REPORTS SECTION ─────────────────────────────────── */
 .reports-section {
   padding: 6rem 2rem 8rem;
   background: var(--bg2);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
-
 .reports-inner { max-width: 1100px; margin: 0 auto; }
-
 .reports-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-top: 4rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 4rem;
 }
-
 .report-card {
-  background: var(--bg2);
-  padding: 2.5rem 2rem;
-  transition: background 0.3s;
-  position: relative;
+  background: var(--bg2); padding: 2.25rem 1.85rem;
+  transition: background 0.3s; position: relative;
 }
-
 .report-card:hover { background: #110e20; }
-
 .report-tag {
-  font-size: 0.55rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--violet);
-  opacity: 0.7;
-  margin-bottom: 1rem;
+  font-size: 0.53rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--violet); opacity: 0.7; margin-bottom: 0.85rem;
 }
-
 .report-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
-  font-weight: 400;
+  font-size: 1.45rem; color: var(--gold); margin-bottom: 0.65rem; font-weight: 400;
 }
-
-.report-desc {
-  font-size: 0.8rem;
-  color: var(--dim);
-  line-height: 1.75;
-  letter-spacing: 0.03em;
-}
-
+.report-desc { font-size: 0.78rem; color: var(--dim); line-height: 1.75; letter-spacing: 0.03em; }
 .report-preview {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: rgba(200,169,110,0.5);
-  line-height: 1.6;
+  margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 0.9rem; color: rgba(200,169,110,0.5); line-height: 1.6;
 }
-
-.report-free {
-  position: absolute;
-  top: 1.25rem; right: 1.25rem;
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bg);
-  background: var(--violet);
-  padding: 0.2rem 0.6rem;
+.report-badge {
+  position: absolute; top: 1.1rem; right: 1.1rem;
+  font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
 }
+.badge-free { color: var(--bg); background: var(--violet); }
+.badge-new  { color: var(--bg); background: var(--gold); }
 
 /* ── PROOF STRIP ─────────────────────────────────────── */
-.proof-strip {
-  padding: 5rem 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
+.proof-strip { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; text-align: center; }
 .proof-quote {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--cream);
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem); font-weight: 300; font-style: italic;
+  color: var(--cream); line-height: 1.5; margin-bottom: 1.5rem;
 }
-
-.proof-attr {
-  font-size: 0.6rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: rgba(200,169,110,0.4);
-}
+.proof-attr { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(200,169,110,0.4); }
 
 /* ── PRICING SECTION ─────────────────────────────────── */
-.pricing-section {
-  padding: 8rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
+.pricing-section { padding: 8rem 2rem; max-width: 1100px; margin: 0 auto; }
 .pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-top: 4rem;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 4rem;
 }
-
 .price-card {
-  background: var(--bg2);
-  padding: 2.5rem 1.75rem;
-  transition: background 0.3s;
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  cursor: pointer;
+  background: var(--bg2); padding: 2.5rem 1.75rem;
+  transition: background 0.3s; position: relative;
+  text-decoration: none; color: inherit; display: block; cursor: pointer;
 }
-
 .price-card:hover { background: #110e20; }
-
-.price-card.featured {
-  background: #0f0c1e;
-  border-top: 2px solid var(--violet);
-}
-
-.price-featured-tag {
-  font-size: 0.5rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--violet);
-  margin-bottom: 1rem;
-}
-
-.price-name {
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 1rem;
-}
-
-.price-amount {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
-  color: var(--gold);
-  font-weight: 300;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-
-.price-cadence {
-  font-size: 0.7rem;
-  color: rgba(240,235,224,0.25);
-  margin-bottom: 2rem;
-  letter-spacing: 0.05em;
-}
-
-.price-features {
-  list-style: none;
-  margin-bottom: 2.5rem;
-}
-
-.price-features li {
-  font-size: 0.75rem;
-  color: var(--dim);
-  padding: 0.45rem 0;
-  border-bottom: 1px solid rgba(200,169,110,0.06);
-  letter-spacing: 0.04em;
-  line-height: 1.5;
-}
-
-.price-features li::before {
-  content: '—  ';
-  color: rgba(200,169,110,0.35);
-}
-
+.price-card.featured { background: #0f0c1e; border-top: 2px solid var(--violet); }
+.price-featured-tag { font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--violet); margin-bottom: 1rem; }
+.price-name { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; }
+.price-amount { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--gold); font-weight: 300; line-height: 1; margin-bottom: 0.25rem; }
+.price-cadence { font-size: 0.7rem; color: rgba(240,235,224,0.25); margin-bottom: 2rem; letter-spacing: 0.05em; }
+.price-features { list-style: none; margin-bottom: 2.5rem; }
+.price-features li { font-size: 0.75rem; color: var(--dim); padding: 0.45rem 0; border-bottom: 1px solid rgba(200,169,110,0.06); letter-spacing: 0.04em; line-height: 1.5; }
+.price-features li::before { content: '—  '; color: rgba(200,169,110,0.35); }
 .price-btn {
-  display: block;
-  text-align: center;
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  padding: 0.8rem;
-  border: 1px solid rgba(200,169,110,0.3);
-  color: var(--gold);
-  text-decoration: none;
-  transition: all 0.3s;
+  display: block; text-align: center; font-size: 0.6rem; letter-spacing: 0.3em;
+  text-transform: uppercase; padding: 0.8rem; border: 1px solid rgba(200,169,110,0.3);
+  color: var(--gold); text-decoration: none; transition: all 0.3s;
 }
-
-.price-card:hover .price-btn {
-  background: var(--gold);
-  color: var(--bg);
-  border-color: var(--gold);
-}
-
-.price-card.featured .price-btn {
-  background: var(--violet);
-  color: var(--bg);
-  border-color: var(--violet);
-}
+.price-card:hover .price-btn { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+.price-card.featured .price-btn { background: var(--violet); color: var(--bg); border-color: var(--violet); }
 
 /* ── FINAL CTA ───────────────────────────────────────── */
-.final-cta {
-  padding: 10rem 2rem;
-  text-align: center;
-  position: relative;
-  border-top: 1px solid var(--line);
-}
-
+.final-cta { padding: 10rem 2rem; text-align: center; position: relative; border-top: 1px solid var(--line); }
 .final-cta::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(123,94,167,0.08), transparent 70%);
-  pointer-events: none;
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(123,94,167,0.08), transparent 70%); pointer-events: none;
 }
-
-.final-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 300;
-  color: var(--cream);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-
+.final-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem; }
 .final-title em { color: var(--gold); font-style: italic; }
-
-.final-sub {
-  font-size: 0.82rem;
-  color: var(--dim);
-  max-width: 420px;
-  margin: 0 auto 3.5rem;
-  line-height: 1.9;
-  letter-spacing: 0.04em;
-}
+.final-sub { font-size: 0.82rem; color: var(--dim); max-width: 420px; margin: 0 auto 3.5rem; line-height: 1.9; letter-spacing: 0.04em; }
 
 /* ── FOOTER ──────────────────────────────────────────── */
 footer {
-  border-top: 1px solid var(--line);
-  padding: 2.5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 0;
-  position: relative;
-  z-index: 2;
+  border-top: 1px solid var(--line); padding: 2.5rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem; position: relative; z-index: 2;
 }
-
-/* Ensure page has enough content at bottom */
-body::after {
-  content: '';
-  display: block;
-  height: 1px;
-}
-
-.footer-logo {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--gold);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  opacity: 0.6;
-}
-
-.footer-note {
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
-  color: rgba(240,235,224,0.2);
-  text-transform: uppercase;
-}
+.footer-logo { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 1rem; font-weight: 600; letter-spacing: -0.03em; opacity: 0.6; }
+.footer-note { font-size: 0.58rem; letter-spacing: 0.2em; color: rgba(240,235,224,0.2); text-transform: uppercase; }
 
 /* ── ANIMATIONS ──────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.4; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(1.3); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.3); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* ── MOBILE ──────────────────────────────────────────── */
 @media (max-width: 768px) {
@@ -717,20 +349,20 @@ body::after {
   .pricing-grid { grid-template-columns: 1fr 1fr; }
   .btn-ghost { display: none; }
   footer { flex-direction: column; text-align: center; }
+  .hero-stats { gap: 1.5rem; }
+  .codex-books { gap: 0.4rem; }
 }
-
 @media (max-width: 480px) {
   .pricing-grid { grid-template-columns: 1fr; }
   .hero-formula { display: none; }
+  .hero-stats { display: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- Sacred geometry canvas -->
 <canvas id="geo-canvas"></canvas>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Vibe Check <span>decoded</span></a>
   <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="nav-cta" target="_blank">
@@ -744,15 +376,36 @@ body::after {
 <section class="hero">
   <div class="hero-label">Sacred mathematics · Ancient calculation · Your blueprint</div>
 
+  <div class="hero-first">The first tool of its kind</div>
+
   <h1 class="hero-title">
     You are<br><em>not a guess.</em>
   </h1>
 
   <p class="hero-sub">
-    Your birth moment encodes a precise mathematical fingerprint — 
-    calculated across five ancient systems simultaneously. 
-    This is what it says about you.
+    89 sacred texts. Centuries of astrological wisdom. One reading — 
+    written for you alone. Your birth moment encodes a precise fingerprint 
+    across five ancient systems. This is what it says.
   </p>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">89+</div>
+      <div class="stat-label">Sacred Texts</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">17</div>
+      <div class="stat-label">Report Types</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Ancient Systems</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Reading, yours alone</div>
+    </div>
+  </div>
 
   <div class="hero-formula">
     <div class="formula-item">Birth Date</div>
@@ -761,12 +414,12 @@ body::after {
     <div class="formula-op">+</div>
     <div class="formula-item">Coordinates</div>
     <div class="formula-op">=</div>
-    <div class="formula-item" style="color:var(--gold);border-color:rgba(200,169,110,0.5)">Your Vibe</div>
+    <div class="formula-item" style="color:var(--gold);border-color:rgba(200,169,110,0.5)">Your Blueprint</div>
   </div>
 
   <div class="hero-cta">
     <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="btn-primary" target="_blank">
-      <span>Run the Calculation →</span>
+      <span>Run the Calculation — Free →</span>
     </a>
     <a href="#how-it-works" class="btn-ghost">See How It Works</a>
   </div>
@@ -778,14 +431,53 @@ body::after {
 </section>
 
 
+<!-- CODEX STRIP -->
+<section class="codex-strip">
+  <div class="codex-inner reveal">
+    <div class="codex-label">The Source Material</div>
+    <h2 class="codex-title">
+      Centuries of sacred knowledge.<br>
+      <em>Fed into a single engine.</em>
+    </h2>
+    <p class="codex-body">
+      Every reading draws from a knowledge base built on 89+ foundational texts — 
+      the actual codexes, grimoires, and scholarly works that define each tradition. 
+      Not summaries. Not pop astrology. The real thing, synthesized by AI trained on 
+      the source material, written in a voice that speaks to you.
+    </p>
+    <div class="codex-books">
+      <div class="codex-book">Brihat Parashara Hora Shastra</div>
+      <div class="codex-book">The Book of Thoth</div>
+      <div class="codex-book">Liber 777</div>
+      <div class="codex-book">I Ching (Wilhelm)</div>
+      <div class="codex-book">Gene Keys — Richard Rudd</div>
+      <div class="codex-book">The Zohar</div>
+      <div class="codex-book">Sabian Symbols — Marc Edmund Jones</div>
+      <div class="codex-book">Layayoga — Goswami</div>
+      <div class="codex-book">Handbook of Chinese Horoscopes — Lau</div>
+      <div class="codex-book">The Chakras &amp; Human Energy Fields</div>
+      <div class="codex-book">Astrology of the Seers</div>
+      <div class="codex-book">Kundalini &amp; the Chakras — Paulson</div>
+      <div class="codex-book">Kabbalah — Scholem</div>
+      <div class="codex-book">The Uranian System — Epstein</div>
+      <div class="codex-book">Sidereal Astrology — Eshelman</div>
+      <div class="codex-book">The Enneagram of Personality</div>
+      <div class="codex-book">Awareness to Action — Tallon &amp; Sikora</div>
+      <div class="codex-book">Mundane Astrology — Gaur</div>
+      <div class="codex-book" style="color:rgba(200,169,110,0.3);border-style:dashed">+ 70 more texts</div>
+    </div>
+  </div>
+</section>
+
+
 <!-- THE FORMULA -->
 <section class="formula-section" id="how-it-works">
   <div class="reveal">
     <div class="section-label">The Calculation</div>
     <h2 class="section-title">Five systems.<br><em>One unified reading.</em></h2>
     <p class="section-body">
-      Most horoscopes use one system. We use five — simultaneously — 
-      then find where they converge. That intersection is where the real signal lives.
+      Most horoscopes use one system. Vibe Check uses five — simultaneously — 
+      then finds where they converge. That intersection is where the real signal lives.
     </p>
   </div>
 
@@ -822,42 +514,27 @@ body::after {
       <line x1="0.5" y1="0" x2="0.5" y2="60" stroke="rgba(200,169,110,0.4)" stroke-width="1"/>
     </svg>
     <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);opacity:0.5;margin-top:0.5rem">↓</div>
-    <div style="font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(200,169,110,0.4);margin-top:0.5rem">Output</div>
+    <div style="font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(200,169,110,0.4);margin-top:0.5rem">17 Reports</div>
   </div>
 
   <div class="outputs-grid reveal">
-    <div class="output-item">
-      <div class="output-icon">🌸</div>
-      <div class="output-name">Divine Feminine</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">⚡</div>
-      <div class="output-name">Divine Masculine</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">💰</div>
-      <div class="output-name">Where's the Money</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">🌑</div>
-      <div class="output-name">Shadow Decoder</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">🎮</div>
-      <div class="output-name">Relationship Codes</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">🌤</div>
-      <div class="output-name">Silver Linings</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">🗓️</div>
-      <div class="output-name">Cosmic Calendar</div>
-    </div>
-    <div class="output-item">
-      <div class="output-icon">✦</div>
-      <div class="output-name">+ More</div>
-    </div>
+    <div class="output-item"><div class="output-icon">✨</div><div class="output-name">Humble Brag</div></div>
+    <div class="output-item"><div class="output-icon">🌸</div><div class="output-name">Divine Feminine</div></div>
+    <div class="output-item"><div class="output-icon">⚡</div><div class="output-name">Divine Masculine</div></div>
+    <div class="output-item"><div class="output-icon">💰</div><div class="output-name">Where's the Money</div></div>
+    <div class="output-item"><div class="output-icon">🌑</div><div class="output-name">Shadow Decoder</div></div>
+    <div class="output-item"><div class="output-icon">🎮</div><div class="output-name">Cheat Codes</div></div>
+    <div class="output-item"><div class="output-icon">🌤</div><div class="output-name">Silver Linings</div></div>
+    <div class="output-item"><div class="output-icon">💘</div><div class="output-name">Secret to Their Heart</div></div>
+    <div class="output-item"><div class="output-icon">🤝</div><div class="output-name">Friend Guide</div></div>
+    <div class="output-item"><div class="output-icon">📚</div><div class="output-name">Recommendations</div></div>
+    <div class="output-item"><div class="output-icon">🗓️</div><div class="output-name">Cosmic Calendar</div></div>
+    <div class="output-item"><div class="output-new">New</div><div class="output-icon">◇</div><div class="output-name">Destiny Matrix</div></div>
+    <div class="output-item"><div class="output-new">New</div><div class="output-icon">🧬</div><div class="output-name">Gene Keys</div></div>
+    <div class="output-item"><div class="output-new">New</div><div class="output-icon">🐉</div><div class="output-name">Chinese Horoscope</div></div>
+    <div class="output-item"><div class="output-new">New</div><div class="output-icon">🃏</div><div class="output-name">Tarot Birth Card</div></div>
+    <div class="output-item"><div class="output-new">New</div><div class="output-icon">🌿</div><div class="output-name">Chakra Body Map</div></div>
+    <div class="output-item"><div class="output-new">New</div><div class="output-icon">🌀</div><div class="output-name">Mythic Identity</div></div>
   </div>
 </section>
 
@@ -869,20 +546,19 @@ body::after {
       <div class="section-label">Sample Readings</div>
       <h2 class="section-title">What the<br><em>calculation reveals</em></h2>
       <p class="section-body">
-        Not generic horoscopes. Chart-specific analysis that knows 
-        the difference between two people born on the same day.
+        Not generic horoscopes. Chart-specific analysis drawn from 89+ sacred texts — 
+        the difference between two people born on the same day is everything.
       </p>
     </div>
 
     <div class="reports-grid reveal">
       <div class="report-card">
-        <div class="report-free">Free</div>
+        <div class="report-badge badge-free">Free</div>
         <div class="report-tag">Humble Brag · Free</div>
         <div class="report-title">Not Bragging, Just Saying</div>
         <div class="report-desc">
           Your chart-accurate brag card. The specific, provable things 
-          that make you genuinely exceptional — pulled from actual placements, 
-          not vibes.
+          that make you genuinely exceptional — pulled from actual placements, not vibes.
         </div>
         <div class="report-preview">
           "Mercury-Venus conjunction making them irresistibly articulate 
@@ -891,7 +567,37 @@ body::after {
       </div>
 
       <div class="report-card">
-        <div class="report-tag">Where's the Money · $8</div>
+        <div class="report-badge badge-new">New</div>
+        <div class="report-tag">Mythic Identity · $2.22</div>
+        <div class="report-title">You Are Persephone</div>
+        <div class="report-desc">
+          The archetypal myths living inside your chart. Not just "you're a Scorpio" — 
+          but which goddess, which hero's journey stage, which shadow figure you're 
+          wrestling with. Named. Specific. Revelatory.
+        </div>
+        <div class="report-preview">
+          "Persephone learning to become Hecate — you were built for the 
+          underworld, and it was always going to make you powerful..."
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-badge badge-new">New</div>
+        <div class="report-tag">Gene Keys · $3.33</div>
+        <div class="report-title">Your Genetic Blueprint</div>
+        <div class="report-desc">
+          Richard Rudd's 64 Gene Keys mapped to your birth chart — 
+          Shadow patterns, Gift activations, and Siddhi potentials across 
+          your Life's Work, Evolution, Radiance, and Purpose sequences.
+        </div>
+        <div class="report-preview">
+          "Gate 48 — the Shadow of Inadequacy dissolves when you stop 
+          waiting to be ready. The Gift of Resourcefulness was always there..."
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-tag">Where's the Money · $3.33</div>
         <div class="report-title">Financial Power Zones</div>
         <div class="report-desc">
           Your wealth archetype, career power zones, what you're leaving 
@@ -904,12 +610,27 @@ body::after {
       </div>
 
       <div class="report-card">
-        <div class="report-tag">Silver Linings · Free</div>
-        <div class="report-title">The Light in the Difficulty</div>
+        <div class="report-badge badge-new">New</div>
+        <div class="report-tag">Destiny Matrix · $3.33</div>
+        <div class="report-title">The Diamond of Fate</div>
         <div class="report-desc">
-          Every hard placement decoded. What your Rahu dasha, Saturn return, 
-          or 12th house stellium is actually building — and why the difficulty 
-          is the point.
+          Elena Negesa's 13-point Destiny Matrix mapped from your birth date 
+          to Major Arcana — your soul's master number, karmic tail, comfort trap, 
+          and generational gift decoded through sacred Tarot archetypes.
+        </div>
+        <div class="report-preview">
+          "Your center is The World — you came here to complete something, 
+          and the completion IS the gift you carry forward..."
+        </div>
+      </div>
+
+      <div class="report-card">
+        <div class="report-tag">Shadow Decoder · $2.22</div>
+        <div class="report-title">The Light in the Shadow</div>
+        <div class="report-desc">
+          Every hard placement decoded. What your Saturn return, 12th house 
+          stellium, or South Node pattern is actually building — and why 
+          the difficulty is the point.
         </div>
         <div class="report-preview">
           "Rahu dasha people become magnetic. The hunger you feel 
@@ -921,11 +642,9 @@ body::after {
 </section>
 
 
-<!-- PROOF -->
+<!-- PROOF STRIP -->
 <section class="proof-strip reveal">
-  <div class="section-divider">
-    <div class="divider-glyph">✦</div>
-  </div>
+  <div class="section-divider"><div class="divider-glyph">✦</div></div>
   <p class="proof-quote">
     "It's not that it told me something I didn't know. 
     It told me something I knew but couldn't say."
@@ -940,19 +659,21 @@ body::after {
     <div class="section-label">The Plans</div>
     <h2 class="section-title">Choose your<br><em>depth of decoding</em></h2>
     <p class="section-body">
-      Start free. Go as deep as you want.
+      Start free. Pay per report or go unlimited. 
+      Every plan unlocks the same 89+ sacred text knowledge base.
     </p>
   </div>
 
   <div class="pricing-grid reveal">
     <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
-      <div class="price-name">Single Report</div>
-      <div class="price-amount">$8</div>
-      <div class="price-cadence">one-time</div>
+      <div class="price-name">Pay Per Report</div>
+      <div class="price-amount">$2–3</div>
+      <div class="price-cadence">per report · yours forever</div>
       <ul class="price-features">
-        <li>Any 1 themed report</li>
-        <li>Unlimited re-reads</li>
-        <li>PDF export</li>
+        <li>Standard reports from $2.22</li>
+        <li>Premium reports from $3.33</li>
+        <li>Instant unlock</li>
+        <li>Re-read anytime</li>
       </ul>
       <div class="price-btn">Select →</div>
     </a>
@@ -960,11 +681,12 @@ body::after {
     <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="price-card" target="_blank">
       <div class="price-name">Life Reset Pack</div>
       <div class="price-amount">$28</div>
-      <div class="price-cadence">one-time · 4 reports</div>
+      <div class="price-cadence">one-time · any 4 reports</div>
       <ul class="price-features">
-        <li>Any 4 themed reports</li>
+        <li>Any 4 reports of your choice</li>
         <li>People Suite included</li>
-        <li>PDF exports + history</li>
+        <li>PDF exports</li>
+        <li>Reading history saved</li>
       </ul>
       <div class="price-btn">Select →</div>
     </a>
@@ -973,10 +695,10 @@ body::after {
       <div class="price-featured-tag">✦ Most Popular</div>
       <div class="price-name">Cosmic Monthly</div>
       <div class="price-amount">$11</div>
-      <div class="price-cadence">per month</div>
+      <div class="price-cadence">per month · cancel anytime</div>
       <ul class="price-features">
-        <li>Unlimited readings</li>
-        <li>All themed reports</li>
+        <li>All 17 reports · unlimited</li>
+        <li>Compatibility readings</li>
         <li>Cosmic Calendar (.ics)</li>
         <li>Monthly transit updates</li>
         <li>Reading history saved</li>
@@ -990,10 +712,10 @@ body::after {
       <div class="price-cadence">per month</div>
       <ul class="price-features">
         <li>Everything in Monthly</li>
-        <li>Habit Builder module</li>
-        <li>5 gift credits/month</li>
+        <li>5 gift credits / month</li>
         <li>Early access to new reports</li>
         <li>Founding member status</li>
+        <li>Priority support</li>
       </ul>
       <div class="price-btn">Select →</div>
     </a>
@@ -1004,15 +726,15 @@ body::after {
 <!-- FINAL CTA -->
 <section class="final-cta reveal">
   <h2 class="final-title">
-    The numbers<br>
-    <em>already know.</em>
+    The ancients<br>
+    <em>already calculated it.</em>
   </h2>
   <p class="final-sub">
-    Your first reading is free. No account required. 
-    Enter your birth data and see what the calculation returns.
+    89 sacred texts. Five ancient systems. One reading written for you alone. 
+    Your first report is free — no account required.
   </p>
   <a href="https://reading-engine-dvnjthjvgdfgsbkdjrjzqe.streamlit.app" class="btn-primary" target="_blank">
-    <span>Run Your Calculation — Free →</span>
+    <span>Begin Your Reading — Free →</span>
   </a>
 </section>
 
@@ -1020,157 +742,70 @@ body::after {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Vibe Check</div>
-  <div class="footer-note">© 2026 checkavibe.com · Western · Vedic · Human Design · Numerology</div>
+  <div class="footer-note">© 2026 checkavibe.com · Western · Vedic · Human Design · Numerology · Gene Keys · Tarot</div>
 </footer>
 
-</div><!-- end .content -->
+</div>
 
 
 <script>
-// ── Sacred Geometry Canvas ─────────────────────────────────────────────
+// Sacred Geometry Canvas
 const canvas = document.getElementById('geo-canvas');
 const ctx    = canvas.getContext('2d');
 let   W, H, t = 0;
 
-function resize() {
-  W = canvas.width  = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 resize();
 window.addEventListener('resize', resize);
 
-function drawFlowerOfLife(x, y, r, alpha, t) {
-  const circles = [
-    [0, 0],
-    [r, 0], [-r, 0],
-    [r/2, r*Math.sqrt(3)/2], [-r/2, r*Math.sqrt(3)/2],
-    [r/2, -r*Math.sqrt(3)/2], [-r/2, -r*Math.sqrt(3)/2],
-  ];
-  ctx.strokeStyle = `rgba(200,169,110,${alpha})`;
-  ctx.lineWidth   = 0.5;
-  circles.forEach(([cx, cy]) => {
-    ctx.beginPath();
-    ctx.arc(x + cx, y + cy, r, 0, Math.PI * 2);
-    ctx.stroke();
-  });
+function drawFlowerOfLife(x, y, r, alpha) {
+  const circles = [[0,0],[r,0],[-r,0],[r/2,r*Math.sqrt(3)/2],[-r/2,r*Math.sqrt(3)/2],[r/2,-r*Math.sqrt(3)/2],[-r/2,-r*Math.sqrt(3)/2]];
+  ctx.strokeStyle = `rgba(200,169,110,${alpha})`; ctx.lineWidth = 0.5;
+  circles.forEach(([cx,cy]) => { ctx.beginPath(); ctx.arc(x+cx,y+cy,r,0,Math.PI*2); ctx.stroke(); });
 }
 
 function drawMetatron(x, y, r, alpha) {
   const points = [];
-  for (let i = 0; i < 6; i++) {
-    const a = (i * Math.PI) / 3;
-    points.push([x + r * Math.cos(a), y + r * Math.sin(a)]);
+  for (let i=0;i<6;i++) { const a=i*Math.PI/3; points.push([x+r*Math.cos(a),y+r*Math.sin(a)]); }
+  ctx.strokeStyle=`rgba(167,139,250,${alpha})`; ctx.lineWidth=0.4;
+  for (let i=0;i<points.length;i++) for (let j=i+1;j<points.length;j++) {
+    ctx.beginPath(); ctx.moveTo(points[i][0],points[i][1]); ctx.lineTo(points[j][0],points[j][1]); ctx.stroke();
   }
-  ctx.strokeStyle = `rgba(167,139,250,${alpha})`;
-  ctx.lineWidth   = 0.4;
-  for (let i = 0; i < points.length; i++) {
-    for (let j = i + 1; j < points.length; j++) {
-      ctx.beginPath();
-      ctx.moveTo(points[i][0], points[i][1]);
-      ctx.lineTo(points[j][0], points[j][1]);
-      ctx.stroke();
-    }
-  }
-  // outer hex
-  ctx.beginPath();
-  points.forEach(([px, py], i) => {
-    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-  });
-  ctx.closePath();
-  ctx.stroke();
-  // inner circle
-  ctx.strokeStyle = `rgba(200,169,110,${alpha * 0.6})`;
-  ctx.beginPath();
-  ctx.arc(x, y, r * 0.5, 0, Math.PI * 2);
-  ctx.stroke();
+  ctx.beginPath(); points.forEach(([px,py],i) => i===0?ctx.moveTo(px,py):ctx.lineTo(px,py)); ctx.closePath(); ctx.stroke();
+  ctx.strokeStyle=`rgba(200,169,110,${alpha*0.6})`; ctx.beginPath(); ctx.arc(x,y,r*0.5,0,Math.PI*2); ctx.stroke();
 }
 
-function drawSpiral(x, y, alpha, t) {
-  ctx.strokeStyle = `rgba(200,169,110,${alpha})`;
-  ctx.lineWidth   = 0.4;
-  ctx.beginPath();
-  for (let i = 0; i < 400; i++) {
-    const a = 0.05 * i + t * 0.02;
-    const r = 1.5 * i * 0.15;
-    const px = x + r * Math.cos(a);
-    const py = y + r * Math.sin(a);
-    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-  }
+function drawSpiral(x, y, alpha) {
+  ctx.strokeStyle=`rgba(200,169,110,${alpha})`; ctx.lineWidth=0.4; ctx.beginPath();
+  for (let i=0;i<400;i++) { const a=0.05*i+t*0.02,r=1.5*i*0.15,px=x+r*Math.cos(a),py=y+r*Math.sin(a); i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); }
   ctx.stroke();
 }
 
 function drawGrid(alpha) {
-  const step = 80;
-  ctx.strokeStyle = `rgba(200,169,110,${alpha})`;
-  ctx.lineWidth   = 0.3;
-  for (let x = 0; x < W; x += step) {
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-  }
-  for (let y = 0; y < H; y += step) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-  }
+  const step=80; ctx.strokeStyle=`rgba(200,169,110,${alpha})`; ctx.lineWidth=0.3;
+  for (let x=0;x<W;x+=step) { ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
+  for (let y=0;y<H;y+=step) { ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
 }
 
 function animate() {
-  ctx.clearRect(0, 0, W, H);
-  t++;
-
-  // subtle grid
+  ctx.clearRect(0,0,W,H); t++;
   drawGrid(0.04);
-
-  // rotating flower of life center
-  ctx.save();
-  ctx.translate(W * 0.5, H * 0.45);
-  ctx.rotate(t * 0.0008);
-  drawFlowerOfLife(0, 0, 80, 0.12, t);
-  ctx.restore();
-
-  // metatron's cube upper right
-  ctx.save();
-  ctx.translate(W * 0.82, H * 0.2);
-  ctx.rotate(-t * 0.001);
-  drawMetatron(0, 0, 120, 0.07);
-  ctx.restore();
-
-  // spiral lower left
-  ctx.save();
-  ctx.translate(W * 0.15, H * 0.75);
-  drawSpiral(0, 0, 0.08, t);
-  ctx.restore();
-
-  // small flower lower right
-  ctx.save();
-  ctx.translate(W * 0.88, H * 0.8);
-  ctx.rotate(t * 0.0015);
-  drawFlowerOfLife(0, 0, 45, 0.06, t);
-  ctx.restore();
-
-  // faint metatron far left
-  ctx.save();
-  ctx.translate(W * 0.08, H * 0.35);
-  ctx.rotate(t * 0.0005);
-  drawMetatron(0, 0, 80, 0.05);
-  ctx.restore();
-
+  ctx.save(); ctx.translate(W*0.5,H*0.45); ctx.rotate(t*0.0008); drawFlowerOfLife(0,0,80,0.12); ctx.restore();
+  ctx.save(); ctx.translate(W*0.82,H*0.2); ctx.rotate(-t*0.001); drawMetatron(0,0,120,0.07); ctx.restore();
+  ctx.save(); ctx.translate(W*0.15,H*0.75); drawSpiral(0,0,0.08); ctx.restore();
+  ctx.save(); ctx.translate(W*0.88,H*0.8); ctx.rotate(t*0.0015); drawFlowerOfLife(0,0,45,0.06); ctx.restore();
+  ctx.save(); ctx.translate(W*0.08,H*0.35); ctx.rotate(t*0.0005); drawMetatron(0,0,80,0.05); ctx.restore();
   requestAnimationFrame(animate);
 }
 animate();
 
-
-// ── Scroll reveal ─────────────────────────────────────────────────────
-const reveals = document.querySelectorAll('.reveal');
+// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
-reveals.forEach(r => observer.observe(r));
+document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-
-// ── Smooth section links ──────────────────────────────────────────────
+// Smooth links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
